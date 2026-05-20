@@ -39,45 +39,47 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className=" py-12">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="mb-8">
-          <h2 className="text-4xl font-bold mb-6 flex items-center gap-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
             <span className="text-cyan-400">02.</span>
             <span className="text-white">Projects</span>
-            <div className="flex-1 h-0.5 bg-linear-to-r from-cyan-400 to-transparent ml-4"></div>
+            <div className="hidden sm:flex flex-1 h-0.5 bg-linear-to-r from-cyan-400 to-transparent ml-4"></div>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project) => (
             <div
               key={project.id}
               className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-blue-500 transition duration-300 hover:shadow-lg hover:shadow-blue-500/20 transform hover:scale-105"
             >
-              <div className="bg-linear-to-r from-slate-700 to-slate-600 px-6 py-8 flex items-center justify-between">
+              <div className="bg-linear-to-r from-slate-700 to-slate-600 px-4 sm:px-6 py-6 sm:py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <h2 className="text-3xl font-bold text-white">
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
                     {project.name}
                   </h2>
                 </div>
-                <div className="text-5xl">{project.icon}</div>
+                <div className="text-4xl sm:text-5xl shrink-0">
+                  {project.icon}
+                </div>
               </div>
 
-              <div className="p-6">
-                <p className="text-gray-300 mb-6 leading-relaxed">
+              <div className="p-4 sm:p-6">
+                <p className="text-gray-300 mb-6 text-sm sm:text-base leading-relaxed">
                   {project.description}
                 </p>
 
                 <div className="mb-6">
-                  <p className="text-gray-400 text-sm font-semibold mb-3">
+                  <p className="text-gray-400 text-xs sm:text-sm font-semibold mb-3">
                     Tech Stack:
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs px-3 py-1 rounded-full"
+                        className="bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs px-2 py-1 rounded-full whitespace-nowrap"
                       >
                         {tech}
                       </span>
@@ -85,23 +87,23 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold py-2 rounded-lg text-center hover:shadow-lg hover:shadow-blue-500/50 transition duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold py-2 rounded-lg text-center hover:shadow-lg hover:shadow-blue-500/50 transition duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
-                    <FaExternalLinkAlt size={16} />
+                    <FaExternalLinkAlt size={14} />
                     Demo
                   </a>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold py-2 rounded-lg text-center hover:shadow-lg hover:shadow-blue-500/50 transition duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold py-2 rounded-lg text-center hover:shadow-lg hover:shadow-blue-500/50 transition duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
-                    <FaCode size={16} />
+                    <FaCode size={14} />
                     Source Code
                   </a>
                 </div>
