@@ -8,6 +8,23 @@ export default function Projects() {
   const projects = [
     {
       id: 1,
+      name: "Auspicious Woman",
+      description:
+        "A learning platform designed for women and gender-diverse entrepreneurs, offering structured courses that help users build, scale, and grow their businesses. The platform focuses on accessible, inclusive education combined with community driven support, empowering learners through localized and practical entrepreneurial knowledge.",
+      tech: [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Next.js",
+        "shadcn",
+        "Supabase",
+      ],
+      link: "https://learn.auspiciousapp.com/",
+      github: "https://github.com/nytkevin/loopit.git",
+      icon: <FaGithub />,
+    },
+    {
+      id: 2,
       name: "Loopit",
       description:
         "A movie and TV show discovery platform featuring advanced search functionality and genre filtering. Seamlessly browse through thousands of titles and click on any to view detailed information including ratings, cast, synopsis, and more.",
@@ -17,7 +34,7 @@ export default function Projects() {
       icon: <FaGithub />,
     },
     {
-      id: 2,
+      id: 3,
       name: "Spotify",
       description:
         "Music streaming integration project showcasing API integration and real-time data handling. Discover, play, and manage your favorite tracks.",
@@ -27,7 +44,7 @@ export default function Projects() {
       icon: <FaGithub />,
     },
     {
-      id: 3,
+      id: 4,
       name: "Rwanda Address Hub",
       description:
         "An intuitive address selection tool for Rwanda. Select a province to view its districts, then progressively drill down to find your exact location. The final address is displayed in an easy-to-copy format for seamless integration.",
@@ -97,11 +114,19 @@ export default function Projects() {
                     <FaExternalLinkAlt size={14} />
                     Demo
                   </a>
+
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold py-2 rounded-lg text-center hover:shadow-lg hover:shadow-blue-500/50 transition duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
+                    onClick={(e) => {
+                      if (project.id === 1) {
+                        e.preventDefault();
+                      }
+                    }}
+                    className={`flex-1 bg-linear-to-r from-blue-500 to-cyan-500 text-white font-semibold py-2 rounded-lg text-center hover:shadow-lg hover:shadow-blue-500/50 transition duration-300 flex items-center justify-center gap-2 text-sm sm:text-base ${
+                      project.id === 1 ? "cursor-not-allowed" : ""
+                    }`}
                   >
                     <FaCode size={14} />
                     Source Code
