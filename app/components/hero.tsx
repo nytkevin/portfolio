@@ -1,43 +1,51 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
+
 export default function Hero() {
   return (
-    <section className="pb-20 md:pb-30 flex items-center pt-8 md:pt-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-        <div>
-          <p className="text-cyan-400 text-base sm:text-lg mb-4">
-            Hi, my name is
-          </p>
-
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6">
-            Kevin NZAYITURIKI.
+    <section id="home" className="py-40 md:py-40 min-h-screen w-full">
+      <div className="flex flex-col items-center justify-center text-center space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 12, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{
+            scale: 1.03,
+            y: -6,
+            transition: { type: "spring", stiffness: 100, damping: 20 },
+          }}
+          whileTap={{ scale: 0.98 }}
+          className="relative flex items-center justify-center h-56 w-56 md:h-56 md:w-56 lg:h-72 lg:w-72 rounded-full"
+        >
+          <Image
+            src="/nyt-kevin.jpeg"
+            alt="NZAYITURIKI Kevin"
+            fill
+            className="rounded-full object-cover"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="mx-auto w-full max-w-4xl px-4 sm:px-6"
+        >
+          <h1 className="roboto-mono mb-4 text-3xl text-white sm:text-4xl md:text-5xl lg:text-6xl">
+            Kevin Nzayituriki
           </h1>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-linear-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-6">
-            I build things for the web.
-          </h2>
-
-          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mb-8 leading-relaxed">
+          <h1 className="text-xl text-white sm:text-2xl md:text-3xl lg:text-4xl my-5">
+            Web developer
+          </h1>
+          <p className="inter-desc mx-auto max-w-2xl leading-relaxed text-gray-400 text-sm md:text-lg">
             A Frontend focused web Developer building the frontend of websites
             and web applications that leads to the success of the overall
-            product
+            product. A Frontend focused web Developer building the frontend of
+            websites and web applications that leads to the success of the
+            overall product.
           </p>
-
-          <div className="flex gap-3 sm:gap-4 flex-wrap">
-            <a
-              href="#projects"
-              className="px-5 sm:px-8 py-2 sm:py-3 border-2 border-cyan-400 text-cyan-400 font-semibold text-sm sm:text-base rounded-lg hover:bg-cyan-400 hover:text-slate-900 transition duration-300 hover:shadow-lg hover:shadow-cyan-400/50"
-            >
-              View My Work
-            </a>
-            <a
-              href="#contact"
-              className="px-5 sm:px-8 py-2 sm:py-3 border-2 border-cyan-400 text-cyan-400 font-semibold text-sm sm:text-base rounded-lg hover:bg-cyan-400 hover:text-slate-900 transition duration-300 hover:shadow-lg hover:shadow-cyan-400/50"
-            >
-              Hire Me
-            </a>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

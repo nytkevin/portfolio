@@ -1,111 +1,172 @@
 "use client";
 
+import { motion } from "framer-motion";
+import {
+  FaEnvelope,
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+} from "react-icons/fa6";
+
 export default function Contact() {
   const socialLinks = [
     {
       name: "LinkedIn",
       url: "https://www.linkedin.com/in/kevin-nyt/",
-      color: "hover:text-blue-400 hover:glow-blue",
+      icon: FaLinkedinIn,
     },
-    // {
-    //   name: "Twitter",
-    //   url: "https://twitter.com",
-    //   color: "hover:text-cyan-400 hover:glow-cyan",
-    // },
     {
       name: "Instagram",
       url: "https://www.instagram.com/nyt_kevin/",
-      color: "hover:text-pink-400 hover:glow-pink",
+      icon: FaInstagram,
     },
     {
       name: "Github",
       url: "https://github.com/nytkevin",
-      color: "hover:text-purple-400 hover:glow-purple",
+      icon: FaGithub,
     },
   ];
 
   return (
-    <section id="contact" className="py-12 md:py-15 pb-20 md:pb-30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="mb-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-            <span className="text-cyan-400">03.</span>
-            <span className="text-white">Contact Me</span>
-            <div className="hidden sm:flex flex-1 h-0.5 bg-linear-to-r from-cyan-400 to-transparent ml-4"></div>
+    <motion.section
+      id="contact"
+      className="py-16 md:py-24 pb-24 md:pb-32"
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={{
+        hidden: {},
+        show: {
+          transition: {
+            staggerChildren: 0.12,
+          },
+        },
+      }}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <motion.div
+          className="mb-8"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.7, ease: "easeOut" },
+            },
+          }}
+        >
+          <h2 className="text-center text-2xl uppercase tracking-[0.35em] text-white font-bold pb-7">
+            Contact Me
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="text-gray-400 text-xs sm:text-sm max-w-2xl w-full md:w-auto">
-            <p>
-              You can find me on
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-cyan-400 hover:text-cyan-300 transition duration-300 hover:shadow-lg hover:shadow-cyan-400/50"
-              >
-                @Twitter
-              </a>
-              for a chat or
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-300 transition duration-300 hover:shadow-lg hover:shadow-blue-400/50"
-              >
-                @LinkedIn
-              </a>
-              for something a bit more professional. Come say hello, Id love to
-              hear from you.
-            </p>
+        <motion.div
+          className="rounded-3xl border border-white/15 bg-slate-950/70 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_18px_45px_rgba(2,6,23,0.45)] md:p-8"
+          variants={{
+            hidden: { opacity: 0, y: 28 },
+            show: {
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.75, ease: "easeOut" },
+            },
+          }}
+        >
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <motion.div
+              className="max-w-2xl"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: "easeOut" },
+                },
+              }}
+            >
+              <p className="text-sm uppercase tracking-[0.3em] text-white/45">
+                Get in touch
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
+                If you want to discuss a project, collaboration, or just say
+                hello, send me an email and I’ll get back to you.
+              </p>
+            </motion.div>
+
+            <motion.a
+              href="mailto:nzayiutrikikevin@gmail.com"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white px-6 py-3 text-sm font-semibold text-slate-950"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, ease: "easeOut" },
+                },
+              }}
+            >
+              <FaEnvelope size={14} />
+              Contact Me
+            </motion.a>
           </div>
 
-          <div className="flex flex-wrap gap-3 sm:gap-6 justify-center md:justify-end w-full md:w-auto">
-            {socialLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-cyan-400 transition duration-300 text-xs sm:text-sm font-medium hover:shadow-lg hover:shadow-cyan-400/50 underline"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </div>
+          <div className="mt-8 border-t border-white/10 pt-6">
+            <motion.div
+              className="mb-4 flex items-center justify-between gap-4"
+              variants={{
+                hidden: { opacity: 0, y: 16 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.55, ease: "easeOut" },
+                },
+              }}
+            >
+              <p className="text-sm font-medium text-white/70">
+                Find me elsewhere
+              </p>
+            </motion.div>
 
-        <div className="text-center mt-4 text-gray-500 text-xs sm:text-sm">
-          <p>Designed & Built by Kevin NZAYITURIKI </p>
-        </div>
+            <motion.div
+              className="grid grid-cols-1 gap-3 sm:grid-cols-3"
+              variants={{
+                hidden: {},
+                show: {
+                  transition: {
+                    staggerChildren: 0.08,
+                  },
+                },
+              }}
+            >
+              {socialLinks.map((link) => {
+                const Icon = link.icon;
+
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-white"
+                    variants={{
+                      hidden: { opacity: 0, y: 18 },
+                      show: {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.55, ease: "easeOut" },
+                      },
+                    }}
+                  >
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-slate-900 text-white">
+                      <Icon size={16} />
+                    </span>
+                    <span className="text-sm font-medium">{link.name}</span>
+                  </motion.a>
+                );
+              })}
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
-
-      <style jsx>{`
-        @keyframes glow {
-          0%,
-          100% {
-            text-shadow: 0 0 10px currentColor;
-          }
-          50% {
-            text-shadow:
-              0 0 20px currentColor,
-              0 0 30px currentColor;
-          }
-        }
-        .hover\:glow-blue:hover {
-          animation: glow 0.6s ease-in-out;
-        }
-        .hover\:glow-cyan:hover {
-          animation: glow 0.6s ease-in-out;
-        }
-        .hover\:glow-pink:hover {
-          animation: glow 0.6s ease-in-out;
-        }
-        .hover\:glow-purple:hover {
-          animation: glow 0.6s ease-in-out;
-        }
-      `}</style>
-    </section>
+    </motion.section>
   );
 }
