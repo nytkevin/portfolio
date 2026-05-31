@@ -41,9 +41,7 @@ export default function Hero() {
           <p className="inter-desc mx-auto max-w-2xl leading-relaxed text-gray-400 text-sm md:text-lg">
             A Frontend focused web Developer building the frontend of websites
             and web applications that leads to the success of the overall
-            product. A Frontend focused web Developer building the frontend of
-            websites and web applications that leads to the success of the
-            overall product.
+            product.
           </p>
         </motion.div>
       </div>
