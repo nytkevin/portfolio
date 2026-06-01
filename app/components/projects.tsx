@@ -64,6 +64,17 @@ export default function Projects() {
       github: "https://github.com/nytkevin/Rwanda-Address-Hub.git",
       icon: <FaGithub />,
     },
+    {
+      id: 5,
+      name: "Stock Market Stak",
+      image: "/marketstack.png",
+      description:
+        "A market data lookup and dashboard app offering tickers, exchanges, end-of-day and historical data, splits, dividends, and currency/timezone information via internal API routes.",
+      tech: ["React", "TypeScript", "redux", "MarketStack API", "Tailwind CSS"],
+      link: "https://martek-stack.vercel.app/",
+      github: "https://github.com/nytkevin/martek-Stack",
+      icon: <FaGithub />,
+    },
   ];
 
   return (

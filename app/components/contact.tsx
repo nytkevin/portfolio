@@ -61,7 +61,7 @@ export default function Contact() {
         </motion.div>
 
         <motion.div
-          className="rounded-3xl border border-white/15 bg-slate-950/70 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.04),0_18px_45px_rgba(2,6,23,0.45)] md:p-8"
+          className="rounded-3xl border border-white/15 bg-slate-950/70 p-6 md:p-8"
           variants={{
             hidden: { opacity: 0, y: 28 },
             show: {
