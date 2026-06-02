@@ -158,7 +158,7 @@ export default function Navbar() {
           </div>
 
           <a
-            href="/resume.pdf"
+            href="/Kevin_Nzayituriki_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden rounded-lg border border-white bg-white px-4 pb-1 pt-1.5 font-medium text-slate-950 transition duration-300 hover:bg-white/90 hover:scale-105 md:inline-flex"
