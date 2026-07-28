@@ -2,6 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+});
 
 export default function Hero() {
   return (
@@ -36,12 +41,16 @@ export default function Hero() {
             Kevin Nzayituriki
           </h1>
           <h1 className="text-xl text-white sm:text-2xl md:text-3xl lg:text-4xl my-5">
-            Web developer
+            software developer
           </h1>
-          <p className="inter-desc mx-auto max-w-2xl leading-relaxed text-gray-400 text-sm md:text-lg">
-            A Frontend focused web Developer building the frontend of websites
-            and web applications that leads to the success of the overall
-            product.
+          <p
+            className={`${inter.className} mx-auto max-w-2xl leading-relaxed text-gray-400 italic text-sm md:text-lg`}
+          >
+            I'm a Frontend Developer passionate about creating modern,
+            responsive, and user-friendly websites and web applications. I enjoy
+            solving real-world problems through clean code, thoughtful design,
+            and seamless user experiences while continuously learning new
+            technologies and best practices.
           </p>
         </motion.div>
       </div>

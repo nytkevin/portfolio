@@ -9,6 +9,7 @@ import {
   SiKubernetes,
   SiMongodb,
   SiMysql,
+  SiNextdotjs,
   SiNodedotjs,
   SiPhp,
   SiPostgresql,
@@ -16,7 +17,11 @@ import {
   SiRedis,
   SiTailwindcss,
   SiTypescript,
+  SiExpress,
+  SiSupabase,
 } from "react-icons/si";
+
+import { FaDatabase } from "react-icons/fa";
 import { FaAws, FaReact } from "react-icons/fa6";
 
 type TechnologyItem = {
@@ -39,17 +44,17 @@ const technologies: TechnologyCategory[] = [
       { name: "Tailwind CSS", icon: SiTailwindcss, accent: "text-cyan-300" },
       { name: "TypeScript", icon: SiTypescript, accent: "text-sky-400" },
       { name: "React JS", icon: FaReact, accent: "text-cyan-400" },
-      { name: "React Native", icon: FaReact, accent: "text-sky-300" },
+      { name: "Next.js", icon: SiNextdotjs, accent: "text-sky-400" },
     ],
   },
   {
     title: "Backend",
     description: "Server-side logic and APIs.",
     items: [
+      { name: "Node.js", icon: SiNodedotjs, accent: "text-green-400" },
+      { name: "Express.js", icon: SiExpress, accent: "text-white" },
       { name: "Python", icon: SiPython, accent: "text-blue-300" },
-      { name: "NodeJS", icon: SiNodedotjs, accent: "text-green-400" },
-      { name: "PHP", icon: SiPhp, accent: "text-indigo-300" },
-      { name: "GraphQL", icon: SiGraphql, accent: "text-pink-400" },
+      { name: "Supabase", icon: SiSupabase, accent: "text-emerald-400" },
     ],
   },
   {
@@ -59,19 +64,20 @@ const technologies: TechnologyCategory[] = [
       { name: "MySQL", icon: SiMysql, accent: "text-sky-300" },
       { name: "PostgreSQL", icon: SiPostgresql, accent: "text-indigo-300" },
       { name: "MongoDB", icon: SiMongodb, accent: "text-emerald-400" },
-      { name: "Redis", icon: SiRedis, accent: "text-red-400" },
+      // { name: "Redis", icon: SiRedis, accent: "text-red-400" },
+      { name: "Oracle", icon: FaDatabase, accent: "text-red-500" },
     ],
   },
-  {
-    title: "DevOps",
-    description: "Delivery, orchestration, and cloud tools.",
-    items: [
-      { name: "Docker", icon: SiDocker, accent: "text-sky-300" },
-      { name: "Kubernetes", icon: SiKubernetes, accent: "text-blue-300" },
-      { name: "CircleCI", icon: SiCircleci, accent: "text-slate-300" },
-      { name: "AWS", icon: FaAws, accent: "text-amber-300" },
-    ],
-  },
+  // {
+  //   title: "DevOps",
+  //   description: "Delivery, orchestration, and cloud tools.",
+  //   items: [
+  //     { name: "Docker", icon: SiDocker, accent: "text-sky-300" },
+  //     { name: "Kubernetes", icon: SiKubernetes, accent: "text-blue-300" },
+  //     { name: "CircleCI", icon: SiCircleci, accent: "text-slate-300" },
+  //     { name: "AWS", icon: FaAws, accent: "text-amber-300" },
+  //   ],
+  // },
 ];
 
 const containerVariants = {
