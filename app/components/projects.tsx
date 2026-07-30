@@ -38,6 +38,24 @@ export default function Projects() {
     },
     {
       id: 3,
+      name: "Preston Day Clinic",
+      image: "/prestondayclinic.png",
+      description:
+        "A fictional clinic website created to showcase frontend development and UI design skills. Features a modern healthcare interface with responsive layouts, service sections, doctor profiles, and appointment-focused user experience.",
+      tech: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "React",
+        "Responsive Design",
+        "UI/UX Design",
+      ],
+      link: "https://preston-day-clinic.vercel.app/",
+      github: "https://github.com/nytkevin/preston-day-clinic.git",
+      icon: <FaGithub />,
+    },
+    {
+      id: 4,
       name: "Spotify",
       image: "/spotify.png",
       description:
@@ -54,7 +72,7 @@ export default function Projects() {
       icon: <FaGithub />,
     },
     {
-      id: 4,
+      id: 5,
       name: "Rwanda Address Hub",
       image: "/rah.png",
       description:
@@ -65,7 +83,7 @@ export default function Projects() {
       icon: <FaGithub />,
     },
     {
-      id: 5,
+      id: 6,
       name: "Stock Market Stak",
       image: "/marketstack.png",
       description:
