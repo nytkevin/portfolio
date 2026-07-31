@@ -50,7 +50,7 @@ export default function Projects() {
         "Responsive Design",
         "UI/UX Design",
       ],
-      link: "https://preston-day-clinic.vercel.app/",
+      link: "https://prestondayclinic.vercel.app/",
       github: "https://github.com/nytkevin/preston-day-clinic.git",
       icon: <FaGithub />,
     },
