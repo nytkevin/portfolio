@@ -46,11 +46,11 @@ export default function Hero() {
           <p
             className={`${inter.className} mx-auto max-w-2xl leading-relaxed text-gray-400 italic text-sm md:text-lg`}
           >
-            I'm a Frontend Developer passionate about creating modern,
-            responsive, and user-friendly websites and web applications. I enjoy
-            solving real-world problems through clean code, thoughtful design,
-            and seamless user experiences while continuously learning new
-            technologies and best practices.
+            I&apos;m a Software Developer focused on front-end development,
+            passionate about creating modern, responsive, and user-friendly
+            websites and web applications. I enjoy solving real-world problems
+            through clean code, thoughtful design, and seamless user experiences
+            while continuously learning new technologies and best practices.
           </p>
         </motion.div>
       </div>

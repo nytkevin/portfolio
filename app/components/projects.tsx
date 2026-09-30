@@ -42,14 +42,7 @@ export default function Projects() {
       image: "/prestondayclinic.png",
       description:
         "A fictional clinic website created to showcase frontend development and UI design skills. Features a modern healthcare interface with responsive layouts, service sections, doctor profiles, and appointment-focused user experience.",
-      tech: [
-        "Next.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "React",
-        "Responsive Design",
-        "UI/UX Design",
-      ],
+      tech: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
       link: "https://prestondayclinic.vercel.app/",
       github: "https://github.com/nytkevin/preston-day-clinic.git",
       icon: <FaGithub />,

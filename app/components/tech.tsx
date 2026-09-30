@@ -108,7 +108,7 @@ export default function Tech() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
         >
           {technologies.map((category) => (
             <motion.article
