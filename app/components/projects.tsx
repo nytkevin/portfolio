@@ -49,6 +49,25 @@ export default function Projects() {
     },
     {
       id: 4,
+      name: "Cinepoint",
+      image: "/cinepoint.png",
+      description:
+        "A full-stack movie booking application that lets users explore movies, browse showtimes, select seats, and book tickets securely. Features a responsive Next.js frontend, an Express REST API, PostgreSQL database integration, and Stripe payment processing.",
+      tech: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Express.js",
+        "Prisma",
+        "PostgreSQL",
+        "Stripe",
+      ],
+      link: "https://cine-point-ca.vercel.app/",
+      github: "https://github.com/nytkevin/cine-point",
+      icon: <FaGithub />,
+    },
+    {
+      id: 5,
       name: "Spotify",
       image: "/spotify.png",
       description:
@@ -65,7 +84,7 @@ export default function Projects() {
       icon: <FaGithub />,
     },
     {
-      id: 5,
+      id: 6,
       name: "Rwanda Address Hub",
       image: "/rah.png",
       description:
@@ -76,7 +95,7 @@ export default function Projects() {
       icon: <FaGithub />,
     },
     {
-      id: 6,
+      id: 7,
       name: "Stock Market Stak",
       image: "/marketstack.png",
       description:
