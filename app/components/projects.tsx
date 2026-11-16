@@ -110,55 +110,71 @@ export default function Projects() {
   return (
     <section id="projects" className="min-h-screen py-16 md:py-22">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="mb-8">
-          <h2 className="text-center text-2xl uppercase tracking-[0.35em] text-white font-bold pb-5">
+        <div className="mb-10">
+          <p className="roboto-mono text-sm text-yellow-300">$ build_log</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Projects
           </h2>
+          <p className="mt-3 max-w-xl text-sm leading-6 text-slate-300 sm:text-base">
+            A selection of interfaces and applications I&apos;ve built to solve
+            practical problems.
+          </p>
         </div>
 
-        <div className="flex flex-col gap-6 md:gap-8">
-          {projects.map((project, idx) => (
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: {},
+            show: { transition: { staggerChildren: 0.08 } },
+          }}
+          className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3"
+        >
+          {projects.map((project) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, x: -48 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.18 }}
-              transition={{
-                delay: idx * 0.08,
-                duration: 0.6,
-                ease: [0.22, 1, 0.36, 1],
+              variants={{
+                hidden: { opacity: 0, y: 28 },
+                show: { opacity: 1, y: 0 },
               }}
-              className="flex w-full flex-col overflow-hidden rounded-3xl border border-white/15 bg-slate-900/70 transition duration-300 hover:border-white/30 hover:shadow-lg hover:shadow-white/10 md:flex-row"
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6 }}
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/15 bg-slate-900/70 shadow-lg shadow-black/10 transition-shadow duration-300 hover:shadow-xl hover:shadow-black/25"
             >
-              <div className="w-full border-white/10 bg-slate-950/10 md:w-[42%] md:border-b-0">
-                <div className="relative aspect-16/11 overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    className="object-cover object-top"
-                  />
-                </div>
+              <div className="relative aspect-video overflow-hidden bg-slate-950">
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  fill
+                  className="object-cover object-top transition duration-500 group-hover:scale-100"
+                />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-t from-slate-950/80 to-transparent" />
               </div>
 
-              <div className="flex flex-1 flex-col p-5 sm:p-6 md:p-8">
-                <h2 className="text-xl font-bold text-white sm:text-2xl md:text-3xl">
-                  {project.name}
-                </h2>
+              <div className="flex flex-1 flex-col p-5">
+                <div className="flex items-start justify-between gap-4">
+                  <h2 className="text-xl font-bold tracking-tight text-white">
+                    {project.name}
+                  </h2>
+                  <span className="roboto-mono pt-1 text-[10px] text-yellow-300/70">
+                    {String(project.id).padStart(2, "0")}
+                  </span>
+                </div>
 
-                <p className="mt-4 text-sm leading-relaxed text-slate-300 sm:text-base">
+                <p className="mt-3 min-h-24 text-sm leading-6 text-slate-300">
                   {project.description}
                 </p>
 
-                <div className="mt-6">
-                  <p className="mb-3 text-xs font-semibold text-white/55 sm:text-sm">
+                <div className="mt-4">
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-white/60">
                     Tech Stack:
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs text-white/80"
+                        className="whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[11px] text-white/80"
                       >
                         {tech}
                       </span>
@@ -166,15 +182,15 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-auto flex gap-3 pt-7">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition duration-300 hover:border-white/30 hover:bg-white/15"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-yellow-300 px-3 py-2.5 text-sm font-bold text-slate-950 transition duration-300 hover:bg-yellow-200"
                   >
                     <FaExternalLinkAlt size={14} />
-                    Demo
+                    Live demo
                   </a>
 
                   <a
@@ -186,7 +202,7 @@ export default function Projects() {
                         e.preventDefault();
                       }
                     }}
-                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 bg-slate-950/60 px-4 py-3 text-sm font-semibold text-white transition duration-300 hover:border-white/30 hover:bg-slate-950 ${
+                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/4 px-3 py-2.5 text-sm font-semibold text-slate-200 transition duration-300 hover:bg-white/8 hover:text-white ${
                       !project.github ? "cursor-not-allowed opacity-50" : ""
                     }`}
                   >
@@ -197,7 +213,7 @@ export default function Projects() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

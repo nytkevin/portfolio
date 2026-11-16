@@ -3,26 +3,19 @@
 import { motion } from "framer-motion";
 import type { IconType } from "react-icons";
 import {
-  SiCircleci,
-  SiDocker,
-  SiGraphql,
-  SiKubernetes,
   SiMongodb,
   SiMysql,
   SiNextdotjs,
   SiNodedotjs,
-  SiPhp,
   SiPostgresql,
   SiPython,
-  SiRedis,
   SiTailwindcss,
   SiTypescript,
   SiExpress,
   SiSupabase,
 } from "react-icons/si";
-
 import { FaDatabase } from "react-icons/fa";
-import { FaAws, FaReact } from "react-icons/fa6";
+import { FaReact } from "react-icons/fa6";
 
 type TechnologyItem = {
   name: string;
@@ -64,91 +57,94 @@ const technologies: TechnologyCategory[] = [
       { name: "MySQL", icon: SiMysql, accent: "text-sky-300" },
       { name: "PostgreSQL", icon: SiPostgresql, accent: "text-indigo-300" },
       { name: "MongoDB", icon: SiMongodb, accent: "text-emerald-400" },
-      // { name: "Redis", icon: SiRedis, accent: "text-red-400" },
       { name: "Oracle", icon: FaDatabase, accent: "text-red-500" },
     ],
   },
-  // {
-  //   title: "DevOps",
-  //   description: "Delivery, orchestration, and cloud tools.",
-  //   items: [
-  //     { name: "Docker", icon: SiDocker, accent: "text-sky-300" },
-  //     { name: "Kubernetes", icon: SiKubernetes, accent: "text-blue-300" },
-  //     { name: "CircleCI", icon: SiCircleci, accent: "text-slate-300" },
-  //     { name: "AWS", icon: FaAws, accent: "text-amber-300" },
-  //   ],
-  // },
 ];
 
 const containerVariants = {
   hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
+  show: { transition: { staggerChildren: 0.12 } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 44, scale: 0.96 },
+  hidden: { opacity: 0, y: 30, scale: 0.98 },
   show: { opacity: 1, y: 0, scale: 1 },
 };
 
 export default function Tech() {
   return (
-    <section id="tech" className="min-h-screen pb-16 pt-24 md:pb-24 md:pt-32">
-      <div className="mx-auto max-w-8xl px-4 sm:px-6 md:px-8 lg:px-20 ">
-        <div className="mb-8">
-          <p className="text-center text-2xl uppercase tracking-[0.35em] text-white font-bold pb-7">
+    <section id="tech" className="pb-16 pt-24 md:pb-24 md:pt-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="mb-10"
+        >
+          <p className="roboto-mono text-sm text-yellow-300">$ toolkit</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Technologies
+          </h2>
+          <p className="mt-3 max-w-xl text-sm leading-6 text-slate-300 sm:text-base">
+            A practical set of tools I use to design, build, and ship reliable
+            digital experiences.
           </p>
-        </div>
+        </motion.div>
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
+          viewport={{ once: true, amount: 0.15 }}
+          className="grid grid-cols-1 gap-5 lg:grid-cols-3"
         >
-          {technologies.map((category) => (
+          {technologies.map((category, categoryIndex) => (
             <motion.article
               key={category.title}
               variants={cardVariants}
-              transition={{ duration: 0.7, ease: "easeOut" }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{
-                y: -8,
-                transition: { type: "spring", stiffness: 240, damping: 18 },
+                y: -5,
+                transition: { type: "spring", stiffness: 240, damping: 20 },
               }}
-              className="group rounded-3xl border border-white/15 bg-slate-900/70 p-6 backdrop-blur-sm transition-colors hover:border-white/30 md:p-7"
+              className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 shadow-lg shadow-black/10 backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl hover:shadow-black/20 sm:p-6"
             >
-              <div className="mb-5">
-                <h3 className="text-xl font-semibold text-white">
-                  {category.title}
-                </h3>
-                <p className="mt-1 text-sm text-slate-300">
-                  {category.description}
-                </p>
+              <div className="mb-5 flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-semibold text-white">
+                    {category.title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-5 text-slate-300">
+                    {category.description}
+                  </p>
+                </div>
+                <span className="roboto-mono text-xs text-yellow-300/70">
+                  0{categoryIndex + 1}
+                </span>
               </div>
 
-              <div className="space-y-3">
+              <div className="grid grid-cols-2 gap-3">
                 {category.items.map((item, index) => {
                   const Icon = item.icon;
 
                   return (
                     <motion.div
                       key={item.name}
-                      initial={{ opacity: 0, y: 18 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, amount: 0.2 }}
-                      transition={{ duration: 0.45, delay: index * 0.05 }}
-                      className="flex w-full items-center gap-3 rounded-2xl border border-white/10 bg-black/25 px-4 py-3.5"
+                      variants={{
+                        hidden: { opacity: 0, y: 12 },
+                        show: { opacity: 1, y: 0 },
+                      }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      className="group/item flex min-h-24 flex-col justify-between rounded-xl bg-slate-950/45 p-3 transition-colors duration-300 hover:bg-slate-950/75"
                     >
-                      <div
-                        className={`flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/70 ${item.accent}`}
+                      <span
+                        className={`flex h-9 w-9 items-center justify-center rounded-lg bg-white/6 ${item.accent}`}
                       >
                         <Icon className="h-5 w-5" />
-                      </div>
-                      <span className="text-sm font-medium text-slate-200 sm:text-[15px]">
+                      </span>
+                      <span className="mt-3 text-xs font-medium text-slate-200 sm:text-sm">
                         {item.name}
                       </span>
                     </motion.div>

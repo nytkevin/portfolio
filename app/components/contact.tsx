@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import {
   FaEnvelope,
   FaGithub,
@@ -8,162 +8,112 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 
-export default function Contact() {
-  const socialLinks = [
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/kevin-nyt/",
-      icon: FaLinkedinIn,
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/nyt_kevin/",
-      icon: FaInstagram,
-    },
-    {
-      name: "Github",
-      url: "https://github.com/nytkevin",
-      icon: FaGithub,
-    },
-  ];
+const socialLinks = [
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/kevin-nyt/",
+    icon: FaLinkedinIn,
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/nyt_kevin/",
+    icon: FaInstagram,
+  },
+  {
+    name: "Github",
+    url: "https://github.com/nytkevin",
+    icon: FaGithub,
+  },
+];
 
+const reveal: Variants = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+export default function Contact() {
   return (
     <motion.section
       id="contact"
-      className="py-16 md:py-24 pb-24 md:pb-32"
+      className="pb-24 pt-16 md:pb-32 md:pt-24"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
       variants={{
         hidden: {},
-        show: {
-          transition: {
-            staggerChildren: 0.12,
-          },
-        },
+        show: { transition: { staggerChildren: 0.1 } },
       }}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <motion.div
-          className="mb-8"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            show: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.7, ease: "easeOut" },
-            },
-          }}
-        >
-          <h2 className="text-center text-2xl uppercase tracking-[0.35em] text-white font-bold pb-7">
-            Contact Me
+        <motion.div variants={reveal} className="mb-8">
+          <p className="roboto-mono text-sm text-yellow-300">$ contact</p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Let&apos;s work together
           </h2>
         </motion.div>
 
         <motion.div
-          className="rounded-3xl border border-white/15 bg-slate-950/70 p-6 md:p-8"
-          variants={{
-            hidden: { opacity: 0, y: 28 },
-            show: {
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.75, ease: "easeOut" },
-            },
-          }}
+          variants={reveal}
+          className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] shadow-xl shadow-black/15"
         >
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <motion.div
-              className="max-w-2xl"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.6, ease: "easeOut" },
-                },
-              }}
-            >
-              <p className="text-sm uppercase tracking-[0.3em] text-white/45">
-                Get in touch
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
+          <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
+            <div className="p-6 sm:p-8 md:p-10">
+              <p className="max-w-xl text-base leading-7 text-slate-300 sm:text-lg">
                 If you want to discuss a project, collaboration, or just say
-                hello, send me an email and I’ll get back to you.
+                hello, send me an email and I&apos;ll get back to you.
               </p>
-            </motion.div>
 
-            <motion.a
-              href="mailto:nzayiutrikikevin@gmail.com"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white px-6 py-3 text-sm font-semibold text-slate-950"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.6, ease: "easeOut" },
-                },
-              }}
-            >
-              <FaEnvelope size={14} />
-              Contact Me
-            </motion.a>
-          </div>
+              <motion.a
+                href="mailto:nzayiutrikikevin@gmail.com"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.98 }}
+                className="mt-8 inline-flex items-center gap-3 rounded-xl bg-yellow-300 px-5 py-3.5 text-sm font-bold text-slate-950 transition-colors hover:bg-yellow-200"
+              >
+                <FaEnvelope size={15} />
+                Send an email
+              </motion.a>
 
-          <div className="mt-8 border-t border-white/10 pt-6">
-            <motion.div
-              className="mb-4 flex items-center justify-between gap-4"
-              variants={{
-                hidden: { opacity: 0, y: 16 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.55, ease: "easeOut" },
-                },
-              }}
-            >
-              <p className="text-sm font-medium text-white/70">
+              <p className="mt-4 text-sm text-slate-300">
+                nzayiutrikikevin@gmail.com
+              </p>
+            </div>
+
+            <div className="border-t border-white/6 bg-slate-950/35 p-6 sm:p-8 lg:border-l lg:border-t-0">
+              <p className="text-sm font-medium text-slate-300">
                 Find me elsewhere
               </p>
-            </motion.div>
+              <motion.div
+                className="mt-4 space-y-3"
+                variants={{
+                  hidden: {},
+                  show: { transition: { staggerChildren: 0.08 } },
+                }}
+              >
+                {socialLinks.map((link) => {
+                  const Icon = link.icon;
 
-            <motion.div
-              className="grid grid-cols-1 gap-3 sm:grid-cols-3"
-              variants={{
-                hidden: {},
-                show: {
-                  transition: {
-                    staggerChildren: 0.08,
-                  },
-                },
-              }}
-            >
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
-
-                return (
-                  <motion.a
-                    key={link.name}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-white"
-                    variants={{
-                      hidden: { opacity: 0, y: 18 },
-                      show: {
-                        opacity: 1,
-                        y: 0,
-                        transition: { duration: 0.55, ease: "easeOut" },
-                      },
-                    }}
-                  >
-                    <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-slate-900 text-white">
-                      <Icon size={16} />
-                    </span>
-                    <span className="text-sm font-medium">{link.name}</span>
-                  </motion.a>
-                );
-              })}
-            </motion.div>
+                  return (
+                    <motion.a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variants={reveal}
+                      className="flex items-center justify-between rounded-xl bg-white/4 px-4 py-3 text-slate-300 transition-colors hover:bg-white/8 hover:text-yellow-300"
+                    >
+                      <span className="flex items-center gap-3">
+                        <Icon size={16} />
+                        <span className="text-sm font-medium">{link.name}</span>
+                      </span>
+                    </motion.a>
+                  );
+                })}
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>

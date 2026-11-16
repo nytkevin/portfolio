@@ -10,30 +10,47 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
+const navigation = [
+  { label: "Home", section: "home" },
+  { label: "Tech", section: "tech" },
+  { label: "Projects", section: "projects" },
+  { label: "Contact", section: "contact" },
+];
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/kevin-nyt/",
+    icon: FaLinkedinIn,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/nyt_kevin/",
+    icon: FaInstagram,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/nytkevin",
+    icon: FaGithub,
+  },
+];
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   const menuRef = useRef<HTMLDivElement | null>(null);
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-    const sections = ["home", "tech", "projects", "contact"];
-    const navOffset = 160;
-
     const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + navOffset;
-      let currentSection = sections[0];
+      const scrollPosition = window.scrollY + 120;
+      let currentSection = navigation[0].section;
 
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
+      for (const { section } of navigation) {
+        const element = document.getElementById(section);
 
         if (element && element.offsetTop <= scrollPosition) {
-          currentSection = sectionId;
+          currentSection = section;
         }
       }
 
@@ -53,8 +70,8 @@ export default function Navbar() {
   useEffect(() => {
     if (!isOpen) return;
 
-    const handleDocumentClick = (e: MouseEvent) => {
-      const target = e.target as Node;
+    const handleDocumentClick = (event: MouseEvent) => {
+      const target = event.target as Node;
 
       if (
         menuRef.current &&
@@ -71,202 +88,123 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleDocumentClick);
   }, [isOpen]);
 
-  const linkClass = (section: string) =>
-    `font-medium transition duration-300 ${
-      activeSection === section
-        ? "text-white after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:rounded-full after:bg-white"
-        : "text-white/65 hover:text-white"
-    }`;
-
   const handleNavClick = (section: string) => {
     setActiveSection(section);
     setIsOpen(false);
   };
 
   return (
-    <div className="fixed z-50 w-full border-b border-white/20 bg-slate-950/60 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center px-4 py-4 sm:px-6">
+    <header className="fixed top-0 z-50 w-full border-b border-white/[0.06] bg-black/80 backdrop-blur-xl">
+      <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link
           href="/"
-          className="cursor-pointer text-xl font-bold text-white transition hover:text-white/80 sm:text-2xl"
+          className="roboto-mono text-lg font-bold tracking-tight text-white transition-colors hover:text-yellow-300 sm:text-xl"
         >
-          N.K
+          <span className="text-yellow-300">N.</span>K
         </Link>
 
-        <div className="flex flex-1 items-center justify-end md:justify-center">
-          <nav className="hidden gap-6 md:flex">
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+          {navigation.map(({ label, section }) => (
             <a
-              href="#home"
-              onClick={() => setActiveSection("home")}
-              className={`relative ${linkClass("home")}`}
+              key={section}
+              href={`#${section}`}
+              onClick={() => handleNavClick(section)}
+              className={`relative py-2 text-sm font-medium transition-colors duration-300 ${
+                activeSection === section
+                  ? "text-white after:absolute after:inset-x-0 after:-bottom-0.5 after:mx-auto after:h-0.5 after:w-4 after:rounded-full after:bg-yellow-300"
+                  : "text-slate-300 hover:text-white"
+              }`}
             >
-              Home
+              {label}
             </a>
-            <a
-              href="#tech"
-              onClick={() => setActiveSection("tech")}
-              className={`relative ${linkClass("tech")}`}
-            >
-              Tech
-            </a>
-            <a
-              href="#projects"
-              onClick={() => setActiveSection("projects")}
-              className={`relative ${linkClass("projects")}`}
-            >
-              Projects
-            </a>
-            <a
-              href="#contact"
-              onClick={() => setActiveSection("contact")}
-              className={`relative ${linkClass("contact")}`}
-            >
-              Contact
-            </a>
-          </nav>
-        </div>
+          ))}
+        </nav>
 
-        <div className="ml-4 flex items-center gap-3">
-          <div className="hidden items-center gap-2 md:flex">
-            <a
-              href="https://www.linkedin.com/in/kevin-nyt/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition duration-300 hover:border-white/30 hover:bg-white/10"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedinIn size={15} />
-            </a>
-            <a
-              href="https://www.instagram.com/nyt_kevin/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition duration-300 hover:border-white/30 hover:bg-white/10"
-              aria-label="Instagram"
-            >
-              <FaInstagram size={15} />
-            </a>
-            <a
-              href="https://github.com/nytkevin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition duration-300 hover:border-white/30 hover:bg-white/10"
-              aria-label="GitHub"
-            >
-              <FaGithub size={15} />
-            </a>
+        <div className="flex items-center gap-4">
+          <div className="hidden items-center gap-4 md:flex">
+            {socialLinks.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 transition-colors hover:text-yellow-300"
+                aria-label={label}
+              >
+                <Icon size={15} />
+              </a>
+            ))}
           </div>
 
           <a
             href="/Kevin_Nzayituriki_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden rounded-lg border border-white bg-white px-4 pb-1 pt-1.5 font-medium text-slate-950 transition duration-300 hover:bg-white/90 hover:scale-105 md:inline-flex"
+            className="hidden rounded-lg bg-yellow-300 px-3.5 py-2 text-xs font-bold text-slate-950 transition-colors hover:bg-yellow-200 md:inline-flex"
           >
-            resume
+            Resume
           </a>
 
           <button
-            onClick={toggleMenu}
+            onClick={() => setIsOpen((open) => !open)}
             ref={toggleButtonRef}
-            className="text-2xl text-white md:hidden"
+            className="text-xl text-slate-300 transition-colors hover:text-yellow-300 md:hidden"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           >
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
-      {/* Mobile navigation menu */}
       {isOpen && (
         <div
           ref={menuRef}
-          className="border-t border-white/10 bg-slate-950/75 backdrop-blur-md md:hidden"
+          className="border-t border-white/[0.06] bg-black/95 px-4 py-4 backdrop-blur-xl md:hidden"
         >
-          <div className="space-y-3 px-4 py-4">
-            <a
-              href="#home"
-              onClick={() => handleNavClick("home")}
-              className={`block py-2 font-medium transition duration-300 ${
-                activeSection === "home"
-                  ? "text-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              Home
-            </a>
-            <a
-              href="#tech"
-              onClick={() => handleNavClick("tech")}
-              className={`block py-2 font-medium transition duration-300 ${
-                activeSection === "tech"
-                  ? "text-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              Tech
-            </a>
-            <a
-              href="#projects"
-              onClick={() => handleNavClick("projects")}
-              className={`block py-2 font-medium transition duration-300 ${
-                activeSection === "projects"
-                  ? "text-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              Projects
-            </a>
-            <a
-              href="#contact"
-              onClick={() => handleNavClick("contact")}
-              className={`block py-2 font-medium transition duration-300 ${
-                activeSection === "contact"
-                  ? "text-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              Contact
-            </a>
-            <div className="flex  flex-wrap items-center gap-3 pt-2">
+          <nav className="space-y-1" aria-label="Mobile navigation">
+            {navigation.map(({ label, section }) => (
               <a
-                href="https://www.instagram.com/nyt_kevin/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white"
-                aria-label="Instagram"
+                key={section}
+                href={`#${section}`}
+                onClick={() => handleNavClick(section)}
+                className={`block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                  activeSection === section
+                    ? "bg-yellow-300/10 text-yellow-300"
+                    : "text-slate-300 hover:bg-white/[0.04] hover:text-white"
+                }`}
               >
-                <FaInstagram size={15} />
+                {label}
               </a>
-              <a
-                href="https://www.linkedin.com/in/kevin-nyt/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedinIn size={15} />
-              </a>
-              <a
-                href="https://github.com/nytkevin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white"
-                aria-label="GitHub"
-              >
-                <FaGithub size={15} />
-              </a>
+            ))}
+          </nav>
+
+          <div className="mt-4 flex items-center justify-between border-t border-white/[0.06] pt-4">
+            <div className="flex items-center gap-4">
+              {socialLinks.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-300 transition-colors hover:text-yellow-300"
+                  aria-label={label}
+                >
+                  <Icon size={15} />
+                </a>
+              ))}
             </div>
             <a
               href="/Kevin_Nzayituriki_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-lg border border-white bg-white px-4 py-2 text-center font-medium text-slate-950 transition duration-300 hover:bg-white/90"
+              className="rounded-lg bg-yellow-300 px-3.5 py-2 text-xs font-bold text-slate-950 transition-colors hover:bg-yellow-200"
             >
-              resume
+              Resume
             </a>
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
