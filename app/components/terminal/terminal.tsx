@@ -120,7 +120,7 @@ export default function Terminal() {
   return (
     <section
       aria-label="Interactive terminal"
-      className="h-dvh overflow-hidden bg-term-bg bg-[radial-gradient(circle,var(--color-term-dots)_1px,transparent_1px)] bg-size-[22px_22px] px-4 py-4 sm:px-6"
+      className="h-dvh overflow-hidden bg-term-bg bg-[radial-gradient(circle,var(--color-term-dots)_1px,transparent_1px)] bg-size-[22px_22px] px-4 py-4 sm:px-6 lg:px-8"
     >
       <div className="flex h-full items-center justify-center">
         <div
@@ -136,7 +136,7 @@ export default function Terminal() {
                 ?.focus();
             }
           }}
-          className="flex h-full min-h-0 w-full max-w-245 flex-col overflow-hidden rounded-[14px] border border-term-line bg-term-win shadow-[0_20px_80px_rgba(0,0,0,0.45)] focus-within:border-term-accent/45 focus-within:shadow-[0_20px_80px_rgba(0,0,0,0.45),0_0_60px_rgba(124,199,255,0.1)] sm:max-h-175"
+          className="flex h-full min-h-[85vh] w-full max-w-[1720px] flex-col overflow-hidden rounded-[14px] border border-term-line bg-term-win shadow-[0_20px_80px_rgba(0,0,0,0.45)] focus-within:border-term-accent/45 focus-within:shadow-[0_20px_80px_rgba(0,0,0,0.45),0_0_60px_rgba(124,199,255,0.1)]"
         >
           <TerminalHeader />
           <TerminalBody

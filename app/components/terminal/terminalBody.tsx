@@ -5,6 +5,7 @@ import type { CommandEntry } from "@/app/lib/terminal/commands";
 import TerminalInput from "./terminalInput";
 import TerminalOutput, { CommandButton } from "./terminalOutput";
 import TerminalPrompt from "./terminalPrompt";
+import TerminalProfile from "./terminalProfile";
 
 type AutocompleteResult = { completedValue?: string; suggestions: string[] };
 type TerminalBodyProps = {
@@ -47,7 +48,7 @@ export default function TerminalBody({
   return (
     <div
       ref={bodyRef}
-      className="terminal-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto bg-term-win px-4 pb-1 pt-4 font-mono text-[13px] leading-[1.6] sm:px-6 sm:pb-2 sm:pt-5 sm:text-sm"
+      className="terminal-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto bg-term-win px-4 pb-4 pt-6 font-mono text-[13px] leading-[1.6] sm:px-10 sm:pb-6 sm:pt-8 sm:text-sm lg:px-12"
       aria-busy={isProcessing}
     >
       <div role="log" aria-live="polite" className="min-w-0 wrap-anywhere">
@@ -67,6 +68,7 @@ export default function TerminalBody({
  \$$   \$$ \$$ \$$   \$$`}
           </pre>
         </div>
+        <TerminalProfile />
         <p className="mt-3 font-bold text-white">
           Welcome to Kevin&apos;s Interactive Portfolio.
         </p>
@@ -95,7 +97,7 @@ export default function TerminalBody({
         {entries.map((entry, index) => (
           <div
             key={`${entry.command}-${index}`}
-            className="terminal-command-line mt-4"
+            className="terminal-command-line mt-6"
           >
             <div className="flex min-w-0 items-start">
               <TerminalPrompt />
