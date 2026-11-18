@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kevin NZAYITURIKI - Frontend Developer",
+  title: "Kevin NZAYITURIKI - Fullstack Developer",
   description:
-    "Portfolio of Kevin NZAYITURIKI, Frontend Developer based in Canada",
+    "Portfolio of Kevin NZAYITURIKI, Fullstack Developer based in Canada",
 };
 
 export const viewport: Viewport = {
@@ -33,9 +33,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-black">
-        {children}
-      </body>
+      <body className="min-h-full flex flex-col bg-black">{children}</body>
     </html>
   );
 }

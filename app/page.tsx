@@ -1,22 +1,18 @@
-import Navbar from "./components/navbar";
-import Projects from "./components/projects";
-import Hero from "./components/hero";
-import Contact from "./components/contact";
-import Tech from "./components/tech";
-import Footer from "./components/footer";
-import { MotionConfig } from "framer-motion";
+"use client";
+
+import { useCallback, useState } from "react";
+import Terminal from "./components/terminal/terminal";
+import TerminalIntro from "./components/terminal/terminalIntro";
 
 export default function Home() {
-  return (
-    <MotionConfig reducedMotion="user">
-      <div>
-        <Navbar />
-        <Hero />
-        <Tech />
-        <Projects />
-        <Contact />
-        <Footer />
-      </div>
-    </MotionConfig>
-  );
+  const [showTerminal, setShowTerminal] = useState(false);
+  const handleIntroComplete = useCallback(() => {
+    setShowTerminal(true);
+  }, []);
+
+  if (!showTerminal) {
+    return <TerminalIntro onComplete={handleIntroComplete} />;
+  }
+
+  return <Terminal />;
 }
