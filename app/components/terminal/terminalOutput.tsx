@@ -70,40 +70,40 @@ export default function TerminalOutput({
       );
     case "projects":
       return (
-        <div className="mt-3 space-y-4">
+        <div className="mt-6 w-full space-y-8">
           {result.projects.map((project) => (
             <article
               key={project.id}
-              className="border-l-2 border-term-line pl-3"
+              className="border-l-2 border-term-line py-4 pl-6"
             >
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <div className="relative aspect-video w-full shrink-0 sm:w-36">
+              <div className="flex flex-col gap-6 sm:flex-row">
+                <div className="relative aspect-video w-full shrink-0 sm:w-64 md:w-72 lg:w-80">
                   <Image
                     src={project.image}
                     alt={project.name}
                     fill
-                    sizes="144px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 256px, (max-width: 1024px) 288px, 320px"
                     className="object-cover object-top"
                   />
                 </div>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <h3 className="font-mono text-sm font-bold text-white">
                     {project.name}
                   </h3>
-                  <p className={`mt-1 font-mono text-xs leading-5 ${muted}`}>
+                  <p className={`mt-2 font-mono text-xs leading-6 ${muted}`}>
                     {project.description}
                   </p>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
+                  <div className="mt-3 flex flex-wrap gap-2">
                     {project.tech.map((item) => (
                       <span
                         key={item}
-                        className="rounded-full border border-term-accent/35 px-2 py-0.5 font-mono text-[10px] text-term-accent"
+                        className="rounded-full border border-term-accent/35 px-3 py-1 font-mono text-[10px] text-term-accent"
                       >
                         {item}
                       </span>
                     ))}
                   </div>
-                  <div className="mt-2 flex flex-wrap gap-3 font-mono text-xs">
+                  <div className="mt-4 flex flex-wrap gap-4 font-mono text-xs">
                     <a
                       href={project.link}
                       target="_blank"
